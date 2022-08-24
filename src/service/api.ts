@@ -29,7 +29,7 @@ export interface ISegment {
   attributes: object;
   expiryDate?: string;
   metadata: object;
-  stats: object;
+  stats: IStats;
   type: string;
 }
 
@@ -86,6 +86,9 @@ export interface IStats {
   timePlayed: IStatsCategory;
   wins: IStatsCategory;
   wlPercentage: IStatsCategory;
+  squadSpawns: IStatsCategory;
+  rank: IStatsCategory;
+  scoreGeneral: IStatsCategory;
 }
 
 export interface IStatsCategory {
