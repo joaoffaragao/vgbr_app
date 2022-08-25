@@ -1,11 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import {
-  IRotationMap,
   requisicaoBuscaDadosServer,
   requisicaoBuscaOProximoMapa,
 } from "../../service/api";
-import { IServer } from "./interface";
+import { IRotationMap, IServer } from "./interface";
 
 export interface IServerContextData {
   server: IServer;

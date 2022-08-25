@@ -20,3 +20,13 @@ export interface IServer {
   official: boolean;
   gameId: string;
 }
+
+export interface IRotation {
+  rotation: IRotationMap[];
+}
+
+export interface IRotationMap {
+  mapname: string;
+  image: string;
+  mode: string;
+}

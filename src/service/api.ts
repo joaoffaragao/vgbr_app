@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IServerData } from "../provider/serverProvider/interface";
+import { IRotation, IServerData } from "../provider/serverProvider/interface";
 import { IUser } from "../provider/UserProvider/interface";
 
 axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
@@ -29,16 +29,6 @@ export async function requisicaoBuscaDadosServer() {
     .then((res) => res.data);
 
   return data;
-}
-
-export interface IRotation {
-  rotation: IRotationMap[];
-}
-
-export interface IRotationMap {
-  mapname: string;
-  image: string;
-  mode: string;
 }
 
 export async function requisicaoBuscaOProximoMapa() {
