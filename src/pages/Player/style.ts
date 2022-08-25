@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const PlayerCardCotainer = styled.div`
+  background-color: #0c0c0c;
+
   > header {
     display: flex;
     align-items: center;
@@ -8,6 +10,7 @@ export const PlayerCardCotainer = styled.div`
     padding: 0 2rem;
     background-color: #c9c9c9;
     height: 60px;
+
     > button {
       border-radius: 8px;
       padding: 0.75rem;
@@ -23,13 +26,25 @@ export const PlayerCardCotainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
     gap: 1rem;
+
+    > div {
+      width: 100%;
+      display: flex;
+      color: white;
+      align-items: center;
+      justify-content: space-between;
+      > img {
+        width: 50px;
+      }
+    }
 
     > .playerInfos {
       width: 100%;
       display: flex;
       flex-direction: column;
+      color: white;
 
       > ul {
         width: 100%;

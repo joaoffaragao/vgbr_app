@@ -1,11 +1,12 @@
-import { createContext, useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
-import { IUser, requisicaoBuscaDadosPlayer } from "../../service/api";
+import { createContext, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { requisicaoBuscaDadosPlayer } from "../../service/api";
+import { IUser } from "./interface";
 
 interface IUserContext {
   listUser: string[];
   user: IUser;
-  buscarUser: (plataforma: string, player: string) => void;
+  buscarUser: (player: string) => void;
   limparUser: () => void;
 }
 
@@ -21,14 +22,16 @@ const UserProvider = () => {
   ]);
   const [user, setUser] = useState<IUser>({} as IUser);
 
-  useEffect(() => {
-    console.log("clicou");
-    buscarUser("origin", "MateusCodornShox");
-  }, []);
+  const navigate = useNavigate();
 
-  async function buscarUser(plataforma: string, player: string) {
-    const userData = await requisicaoBuscaDadosPlayer(plataforma, player);
-    setUser(userData);
+  async function buscarUser(player: string) {
+    try {
+      const userData = await requisicaoBuscaDadosPlayer(player);
+      setUser(userData);
+    } catch (error) {
+      console.log(error);
+    }
+    navigate(`/players/${player}`);
   }
 
   function limparUser() {
@@ -36,7 +39,14 @@ const UserProvider = () => {
   }
 
   return (
-    <UserContext.Provider value={{ listUser, user, buscarUser, limparUser }}>
+    <UserContext.Provider
+      value={{
+        listUser,
+        user,
+        buscarUser,
+        limparUser,
+      }}
+    >
       <Outlet />
     </UserContext.Provider>
   );

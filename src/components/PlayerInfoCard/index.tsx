@@ -1,15 +1,15 @@
-import { IStatsCategory } from "../../service/api";
+import { ICategoria } from "../../pages/Player";
 import { PlayerInfoCardLi } from "./style";
 
 interface IProps {
-  categoria: IStatsCategory;
+  categoria: ICategoria;
 }
 
 const PlayerInfoCard = ({ categoria }: IProps) => {
   return (
     <PlayerInfoCardLi>
-      <span>{categoria.displayName}:</span>
-      <span>{categoria.displayValue}</span>
+      <span>{categoria.name}:</span>
+      <span>{categoria.value}</span>
     </PlayerInfoCardLi>
   );
 };

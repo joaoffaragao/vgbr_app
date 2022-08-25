@@ -1,21 +1,15 @@
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import Header from "../../components/Header";
+
 import { UserContext } from "../../provider/UserProvider";
 import { Container } from "./style";
 
-const Testepage = () => {
-  const { listUser, limparUser } = useContext(UserContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    limparUser();
-  }, []);
+const Players = () => {
+  const { listUser, buscarUser } = useContext(UserContext);
 
   return (
     <Container>
-      <header>
-        <h1>VGBR</h1>
-      </header>
+      <Header link={origin} />
       <main>
         <ul>
           {listUser.map((player) => {
@@ -24,7 +18,7 @@ const Testepage = () => {
                 <h2>{player}</h2>
                 <button
                   onClick={() => {
-                    navigate(`${player}`);
+                    buscarUser(player);
                   }}
                 >
                   +
@@ -38,4 +32,4 @@ const Testepage = () => {
   );
 };
 
-export default Testepage;
+export default Players;
