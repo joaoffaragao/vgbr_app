@@ -10,6 +10,7 @@ const MainRoutes = () => {
         <Route path="player" element={<Testepage />} />
         <Route path="player/:id" element={<PlayerCard />} />
         <Route path="*" element={<Testepage />} />
+        <Route path="*" element={<Navigate to="/player" />} />
       </Route>
     </Routes>
   );
