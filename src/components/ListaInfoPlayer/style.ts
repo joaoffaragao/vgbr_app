@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 100%;
-  height: 100vw;
-
-  display: flex;
-  flex-direction: column;
-
+export const PlayerCardCotainer = styled.div`
   > header {
     display: flex;
     align-items: center;
@@ -24,20 +18,24 @@ export const Container = styled.div`
     }
   }
   > main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 1rem;
-    > ul {
-      > li {
+    gap: 1rem;
+
+    > .playerInfos {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      > ul {
+        width: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        > button {
-          padding: 5px;
-          cursor: pointer;
-          background-color: black;
-          color: white;
-          border-radius: 50%;
-          border: none;
-        }
       }
     }
   }

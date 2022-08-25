@@ -3,19 +3,27 @@ import { Outlet } from "react-router-dom";
 import { IUser, requisicaoBuscaDadosPlayer } from "../../service/api";
 
 interface IUserContext {
-  listUser: IUser[];
+  listUser: string[];
   user: IUser;
   buscarUser: (plataforma: string, player: string) => void;
+  limparUser: () => void;
 }
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 const UserProvider = () => {
-  const [listUser, setListuser] = useState<IUser[]>([]);
+  const [listUser] = useState<string[]>([
+    "JaoWick",
+    "GordimHabilidoso",
+    "DoninhaSuicida",
+    "MateusCodornShox",
+    "bandit_zz",
+  ]);
   const [user, setUser] = useState<IUser>({} as IUser);
 
   useEffect(() => {
-    buscarUser("origin", "JaoWick");
+    console.log("clicou");
+    buscarUser("origin", "MateusCodornShox");
   }, []);
 
   async function buscarUser(plataforma: string, player: string) {
@@ -23,8 +31,12 @@ const UserProvider = () => {
     setUser(userData);
   }
 
+  function limparUser() {
+    setUser({} as IUser);
+  }
+
   return (
-    <UserContext.Provider value={{ listUser, user, buscarUser }}>
+    <UserContext.Provider value={{ listUser, user, buscarUser, limparUser }}>
       <Outlet />
     </UserContext.Provider>
   );
