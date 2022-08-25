@@ -18,7 +18,7 @@ const MainRoutes = () => {
 
       <Route element={<UserProvider />}>
         <Route path="players" element={<Players />} />
-        <Route path="players/:id" element={<Player />} />
+        <Route path="players/:tagName" element={<Player />} />
       </Route>
     </Routes>
   );

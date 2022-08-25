@@ -1,6 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { requisicaoBuscaDadosPlayer } from "../../service/api";
+import {
+  requisicaoBuscaDadosPlayer,
+  requisicaoBuscaDadosPlayerID,
+  requisicaoListaDeMembros,
+} from "../../service/api";
 import { IUser } from "./interface";
 
 interface IUserContext {
@@ -8,18 +12,13 @@ interface IUserContext {
   user: IUser;
   buscarUser: (player: string) => void;
   limparUser: () => void;
+  buscarUserID: (player: string) => void;
 }
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 const UserProvider = () => {
-  const [listUser] = useState<string[]>([
-    "JaoWick",
-    "GordimHabilidoso",
-    "DoninhaSuicida",
-    "MateusCodornShox",
-    "bandit_zz",
-  ]);
+  const [listUser, setListUser] = useState<string[]>([]);
   const [user, setUser] = useState<IUser>({} as IUser);
 
   const navigate = useNavigate();
@@ -34,9 +33,41 @@ const UserProvider = () => {
     navigate(`/players/${player}`);
   }
 
+  async function buscarUserID(id: string) {
+    try {
+      const userData = await requisicaoBuscaDadosPlayerID(id);
+      setUser(userData);
+    } catch (error) {
+      console.log(error);
+    }
+    navigate(`/players/${id}`);
+  }
+
   function limparUser() {
     setUser({} as IUser);
   }
+
+  function alteraNome(nome: string) {
+    switch (nome) {
+      case "joaoffa":
+        return "jaoWick";
+      default:
+        return nome;
+    }
+  }
+
+  async function listaDeMembros() {
+    const members = await requisicaoListaDeMembros();
+    const newArray = members.map((membro) => {
+      let nome = alteraNome(membro.name);
+      return nome;
+    });
+    setListUser(newArray);
+  }
+
+  useEffect(() => {
+    listaDeMembros();
+  }, []);
 
   return (
     <UserContext.Provider
@@ -45,6 +76,7 @@ const UserProvider = () => {
         user,
         buscarUser,
         limparUser,
+        buscarUserID,
       }}
     >
       <Outlet />

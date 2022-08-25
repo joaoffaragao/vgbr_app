@@ -42,8 +42,17 @@ export const PlayerCardCotainer = styled.div`
       color: white;
       align-items: center;
       justify-content: space-between;
+
       > img {
         width: 50px;
+      }
+    }
+
+    .img_box {
+      background-color: red;
+      width: 75%;
+      > img {
+        width: 100%;
       }
     }
 

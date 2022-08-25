@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import PlayerInfoCard from "../../components/PlayerInfoCard";
 import { UserContext } from "../../provider/UserProvider";
@@ -14,7 +14,7 @@ const Player = () => {
   const { user, buscarUser, limparUser } = useContext(UserContext);
 
   const [categoryList, setCategoryList] = useState<ICategoria[]>([]);
-  const { id } = useParams();
+  const { tagName } = useParams();
 
   useEffect(() => {
     limparUser();
@@ -46,8 +46,8 @@ const Player = () => {
 
       setCategoryList(newArray);
     } else {
-      if (id) {
-        buscarUser(id);
+      if (tagName) {
+        buscarUser(tagName);
       }
     }
   }, [user]);
@@ -67,7 +67,9 @@ const Player = () => {
             <h2>{user.userName}</h2>
             <img src={user.rankImg} alt="" />
           </div>
-          <img src={user.avatar} alt={user.userName} />
+          <div className="img_box">
+            <img src={user.avatar} alt={user.userName} />
+          </div>
           <section className="playerInfos">
             <ul>
               {categoryList.map((categoria) => {

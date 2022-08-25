@@ -21,6 +21,16 @@ export async function requisicaoBuscaDadosPlayer(player: string) {
   return data;
 }
 
+export async function requisicaoBuscaDadosPlayerID(id: string) {
+  const data = await api
+    .get<IUser>(
+      `https://api.gametools.network/bfv/stats/?format_values=true&playerid=${id}&platform=pc&skip_battlelog=false&lang=en-us`
+    )
+    .then((res) => res.data);
+
+  return data;
+}
+
 export async function requisicaoBuscaDadosServer() {
   const data = await api
     .get<IServerData>(
@@ -39,4 +49,33 @@ export async function requisicaoBuscaOProximoMapa() {
     .then((res) => res.data);
 
   return data.rotation[0];
+}
+
+export interface IClan {
+  canApplyToJoin: boolean;
+  canJoinWithoutApply: boolean;
+  currentSize: number;
+  description?: string;
+  emblem: string;
+  id: string;
+  members: IMember[];
+  name: string;
+  servers: [];
+  tag: string;
+}
+
+export interface IMember {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+export async function requisicaoListaDeMembros() {
+  const data = await api
+    .get<IClan>(
+      "https://api.gametools.network/bfglobal/detailedplatoon/?id=c338def0-fd13-47a0-9be4-43199f3d6b5f&platform=pc&lang=en-us"
+    )
+    .then((res) => res.data);
+
+  return data.members;
 }

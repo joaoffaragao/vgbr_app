@@ -14,7 +14,7 @@ const Header = ({ link }: IProps) => {
       {link && (
         <button
           onClick={() => {
-            navigate(link);
+            navigate(link, { replace: true });
           }}
         >
           voltar
