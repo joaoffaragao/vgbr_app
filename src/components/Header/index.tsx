@@ -9,7 +9,7 @@ const Header = ({ link }: IProps) => {
   const navigate = useNavigate();
 
   return (
-    <HeaderContainer>
+    <HeaderContainer link={link}>
       <h1>VGBR</h1>
       {link && (
         <button

@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header`
+interface IProps {
+  link?: string;
+}
+
+export const HeaderContainer = styled.header<IProps>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${(props) => {
+    return props.link ? "space-between" : "center";
+  }};
   padding: 0 2rem;
   background-color: #c9c9c9;
   height: 60px;

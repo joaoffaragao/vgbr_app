@@ -10,7 +10,7 @@ const Home = () => {
       <Header />
       <nav>
         <button onClick={() => navigate("/servidor")}>Server</button>
-        <button onClick={() => navigate("/players")}>players</button>
+        <button onClick={() => navigate("/players")}>Membros</button>
       </nav>
     </Container>
   );

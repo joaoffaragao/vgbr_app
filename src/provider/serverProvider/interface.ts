@@ -1,5 +1,5 @@
 export interface IServerData {
-  servers: IServer;
+  servers: IServer[];
 }
 
 export interface IServer {

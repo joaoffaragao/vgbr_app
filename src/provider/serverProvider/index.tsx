@@ -1,30 +1,46 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { requisicaoBuscaDadosServer } from "../../service/api";
+import {
+  IRotationMap,
+  requisicaoBuscaDadosServer,
+  requisicaoBuscaOProximoMapa,
+} from "../../service/api";
 import { IServer } from "./interface";
 
-interface IServerContextData {}
+export interface IServerContextData {
+  server: IServer;
+  proximoMapa: IRotationMap;
+}
 
-const ServerContext = createContext<IServerContextData>(
+export const ServerContext = createContext<IServerContextData>(
   {} as IServerContextData
 );
 
 const ServerProvider = () => {
   const [server, setServer] = useState<IServer>({} as IServer);
+  const [proximoMapa, setProximoMapa] = useState<IRotationMap>(
+    {} as IRotationMap
+  );
 
   async function buscaDadosServidor() {
     try {
       const data = await requisicaoBuscaDadosServer();
-      console.log(data);
+      setServer(data.servers[0]);
     } catch (error) {}
+  }
+
+  async function buscarProximoMapa() {
+    const mapa = await requisicaoBuscaOProximoMapa();
+    setProximoMapa(mapa);
   }
 
   useEffect(() => {
     buscaDadosServidor();
+    buscarProximoMapa();
   }, []);
 
   return (
-    <ServerContext.Provider value={{}}>
+    <ServerContext.Provider value={{ server, proximoMapa }}>
       <Outlet />
     </ServerContext.Provider>
   );
