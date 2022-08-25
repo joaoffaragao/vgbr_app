@@ -11,10 +11,14 @@ export interface ICategoria {
 }
 
 const Player = () => {
-  const { user, limparUser, buscarUser } = useContext(UserContext);
-  const navigate = useNavigate();
+  const { user, buscarUser, limparUser } = useContext(UserContext);
+
   const [categoryList, setCategoryList] = useState<ICategoria[]>([]);
   const { id } = useParams();
+
+  useEffect(() => {
+    limparUser();
+  }, []);
 
   useEffect(() => {
     if (user.id) {
@@ -40,47 +44,6 @@ const Player = () => {
         }
       }
 
-      // const stats = user;
-      // const array = [
-      //   stats.accuracy,
-      //   stats.activePlatoon,
-      //   stats.avatar,
-      //   stats.avengerKills,
-      //   stats.awardScore,
-      //   stats.bestClass,
-      //   stats.bonusScore,
-      //   stats.classes,
-      //   stats.currentRankProgress,
-      //   stats.deaths,
-      //   stats.dogtagsTaken,
-      //   stats.headShots,
-      //   stats.headshots,
-      //   stats.heals,
-      //   stats.highestKillStreak,
-      //   stats.id,
-      //   stats.infantryKillDeath,
-      //   stats.infantryKillsPerMinute,
-      //   stats.killAssists,
-      //   stats.killDeath,
-      //   stats.kills,
-      //   stats.killsPerMinute,
-      //   stats.longestHeadShot,
-      //   stats.loses,
-      //   stats.rank,
-      //   stats.rankImg,
-      //   stats.repairs,
-      //   stats.revives,
-      //   stats.roundsPlayed,
-      //   stats.saviorKills,
-      //   stats.scorePerMinute,
-      //   stats.secondsPlayed,
-      //   stats.squadScore,
-      //   stats.timePlayed,
-      //   stats.totalRankProgress,
-      //   stats.userName,
-      //   stats.winPercent,
-      //   stats.wins,
-      // ];
       setCategoryList(newArray);
     } else {
       if (id) {
@@ -88,8 +51,6 @@ const Player = () => {
       }
     }
   }, [user]);
-
-  console.log(categoryList);
 
   if (!user.id) {
     return (
@@ -109,7 +70,7 @@ const Player = () => {
           <img src={user.avatar} alt={user.userName} />
           <section className="playerInfos">
             <ul>
-              {categoryList.map((categoria, index) => {
+              {categoryList.map((categoria) => {
                 return (
                   <PlayerInfoCard key={categoria.name} categoria={categoria} />
                 );

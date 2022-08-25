@@ -2,8 +2,13 @@ import styled from "styled-components";
 
 export const PlayerCardCotainer = styled.div`
   background-color: #0c0c0c;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   > header {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,6 +27,7 @@ export const PlayerCardCotainer = styled.div`
   }
   > main {
     width: 100%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,6 +37,7 @@ export const PlayerCardCotainer = styled.div`
 
     > div {
       width: 100%;
+      max-width: 300px;
       display: flex;
       color: white;
       align-items: center;
@@ -51,6 +58,7 @@ export const PlayerCardCotainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 5px;
       }
     }
   }
