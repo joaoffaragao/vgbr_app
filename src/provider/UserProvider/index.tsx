@@ -51,9 +51,11 @@ const UserProvider = () => {
   function alteraNome(nome: string) {
     switch (nome) {
       case "joaoffa":
-        return "jaoWick";
+        return "JaoWick";
       case "banditfv":
         return "bandit_zz";
+      case "DENIO2020":
+        return "-D3NIO";
       default:
         return nome;
     }
