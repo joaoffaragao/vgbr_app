@@ -1,10 +1,15 @@
 import { useContext } from "react";
 import Header from "../../components/Header";
 import { ServerContext } from "../../provider/serverProvider";
+import ServidorOff from "../ServidorOff";
 import { ServeContainer } from "./style";
 
 const Servidor = () => {
   const { server, team1, team2 } = useContext(ServerContext);
+
+  if (!server.currentMap) {
+    return <ServidorOff />;
+  }
 
   return (
     <ServeContainer>
