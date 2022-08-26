@@ -5,11 +5,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1.5rem;
 
   > main {
     width: 100%;
     padding: 1rem 2rem;
-    max-width: 768px;
+    max-width: 800px;
     > ul {
       width: 100%;
       display: flex;

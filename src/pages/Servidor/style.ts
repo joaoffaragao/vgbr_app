@@ -5,6 +5,8 @@ export const ServeContainer = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  gap: 1.5rem;
+
   > main {
     width: 100%;
     max-width: 800px;
@@ -54,13 +56,15 @@ export const ServeContainer = styled.div`
     .players__box {
       width: 100%;
       display: flex;
+      max-width: 425px;
       flex-wrap: wrap;
+      align-items: center;
       justify-content: space-between;
       gap: 16px;
 
-      .team1 {
+      .team1,
+      .team2 {
         width: 100%;
-        max-width: 320px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -75,21 +79,14 @@ export const ServeContainer = styled.div`
           }
         }
       }
-      .team2 {
-        width: 100%;
-        max-width: 320px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        > ul {
-          width: 100%;
-          list-style: none;
-          > li {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          }
+    }
+
+    @media screen and (min-width: 768px) {
+      .players__box {
+        max-width: 750px;
+        .team1,
+        .team2 {
+          max-width: 325px;
         }
       }
     }

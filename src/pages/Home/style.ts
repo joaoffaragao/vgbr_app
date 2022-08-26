@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+
   > nav {
     padding: 1rem;
     display: flex;
@@ -19,10 +21,12 @@ export const Container = styled.div`
       font-weight: 600;
       background-color: #0c0c0c;
       color: white;
+      cursor: pointer;
     }
 
     > button:hover {
-      background-color: #403f3f;
+      background-color: #4d4d4d;
+      border: 1px solid black;
     }
   }
 `;

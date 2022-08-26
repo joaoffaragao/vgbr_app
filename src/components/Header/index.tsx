@@ -10,18 +10,20 @@ const Header = ({ link }: IProps) => {
 
   return (
     <HeaderContainer link={link}>
-      <Link to={origin}>
-        <h1>VGBR</h1>
-      </Link>
-      {link && (
-        <button
-          onClick={() => {
-            navigate(link, { replace: true });
-          }}
-        >
-          voltar
-        </button>
-      )}
+      <main>
+        <Link to={origin}>
+          <h1>VGBR</h1>
+        </Link>
+        {link && (
+          <button
+            onClick={() => {
+              navigate(link, { replace: true });
+            }}
+          >
+            voltar
+          </button>
+        )}
+      </main>
     </HeaderContainer>
   );
 };
