@@ -14,15 +14,13 @@ const Players = () => {
         <ul>
           {listUser.map((player) => {
             return (
-              <li key={player}>
+              <li
+                key={player}
+                onClick={() => {
+                  buscarUser(player);
+                }}
+              >
                 <h2>{player}</h2>
-                <button
-                  onClick={() => {
-                    buscarUser(player);
-                  }}
-                >
-                  +
-                </button>
               </li>
             );
           })}

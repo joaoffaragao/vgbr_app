@@ -24,7 +24,7 @@ const ServerProvider = () => {
 
   async function buscaDadosServidor() {
     const data = await requisicaoBuscaDadosServer();
-    // setServer(data.servers[0]);
+    setServer(data.servers[0]);
   }
 
   async function buscarPlayersNoServer() {
