@@ -12,8 +12,8 @@ const MainRoutes = () => {
     <Routes>
       <Route path="/" element={<Navigate to="home" />} />
       <Route path="*" element={<Navigate to="/" />} />
-      <Route path="home" element={<Home />} />
       <Route element={<ServerProvider />}>
+        <Route path="home" element={<Home />} />
         <Route path="servidor" element={<Servidor />} />
         <Route path="/servidorOFF" element={<ServidorOff />} />
       </Route>
