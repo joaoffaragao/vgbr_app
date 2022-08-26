@@ -14,6 +14,11 @@ export const HeaderContainer = styled.header<IProps>`
   background-color: #c9c9c9;
   height: 60px;
   width: 100%;
+  > a {
+    text-decoration: none;
+    color: #000;
+  }
+
   > button {
     border-radius: 8px;
     padding: 0.75rem;
@@ -21,5 +26,9 @@ export const HeaderContainer = styled.header<IProps>`
     background-color: black;
     color: white;
     cursor: pointer;
+  }
+  > button:hover {
+    background-color: white;
+    color: black;
   }
 `;

@@ -24,14 +24,8 @@ const UserProvider = () => {
   const navigate = useNavigate();
 
   async function buscarUser(player: string) {
-    try {
-      const userData = await requisicaoBuscaDadosPlayer(player);
-      setUser(userData);
-    } catch (error) {
-      console.log(error);
-      navigate(origin, { replace: true });
-    }
-    navigate(`/players/${player}`);
+    const userData = await requisicaoBuscaDadosPlayer(player);
+    setUser(userData);
   }
 
   async function buscarUserID(id: string) {

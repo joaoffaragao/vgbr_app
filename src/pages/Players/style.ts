@@ -28,6 +28,12 @@ export const Container = styled.div`
         border-radius: 8px;
         color: white;
         gap: 10px;
+        cursor: pointer;
+        border: 1px solid black;
+      }
+      > li:hover {
+        background-color: white;
+        color: black;
       }
     }
 

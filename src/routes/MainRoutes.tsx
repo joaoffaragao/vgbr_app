@@ -5,6 +5,7 @@ import UserProvider from "../provider/UserProvider";
 import Player from "../pages/Player";
 import Players from "../pages/Players";
 import ServerProvider from "../provider/serverProvider";
+import ServidorOff from "../pages/ServidorOff";
 
 const MainRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const MainRoutes = () => {
       <Route path="home" element={<Home />} />
       <Route element={<ServerProvider />}>
         <Route path="servidor" element={<Servidor />} />
+        <Route path="/servidorOFF" element={<ServidorOff />} />
       </Route>
 
       <Route element={<UserProvider />}>

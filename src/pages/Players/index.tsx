@@ -1,11 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 
 import { UserContext } from "../../provider/UserProvider";
 import { Container } from "./style";
 
 const Players = () => {
-  const { listUser, buscarUser } = useContext(UserContext);
+  const { listUser, buscarUser, limparUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    limparUser();
+  }, []);
 
   return (
     <Container>
@@ -18,6 +25,7 @@ const Players = () => {
                 key={player}
                 onClick={() => {
                   buscarUser(player);
+                  navigate(`/players/${player}`);
                 }}
               >
                 <h2>{player}</h2>

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HeaderContainer } from "./style";
 
 interface IProps {
@@ -10,7 +10,9 @@ const Header = ({ link }: IProps) => {
 
   return (
     <HeaderContainer link={link}>
-      <h1>VGBR</h1>
+      <Link to={origin}>
+        <h1>VGBR</h1>
+      </Link>
       {link && (
         <button
           onClick={() => {

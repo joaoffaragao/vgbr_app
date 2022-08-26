@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header";
+import Loading from "../../components/Loading";
 import PlayerInfoCard from "../../components/PlayerInfoCard";
 import { UserContext } from "../../provider/UserProvider";
 import { PlayerCardCotainer } from "./style";
@@ -11,16 +12,11 @@ export interface ICategoria {
 }
 
 const Player = () => {
-  const { user, buscarUser, limparUser } = useContext(UserContext);
-
-  const [categoryList, setCategoryList] = useState<ICategoria[]>([]);
+  const { user, buscarUser } = useContext(UserContext);
   const { tagName } = useParams();
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    limparUser();
-  }, []);
+  const [categoryList, setCategoryList] = useState<ICategoria[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (user.id) {
@@ -56,19 +52,14 @@ const Player = () => {
   }, [user]);
 
   if (!user.id) {
-    return (
-      <div>
-        <h1>Carregando</h1>
-        <button
-          onClick={() => {
-            limparUser();
-            navigate(origin, { replace: true });
-          }}
-        >
-          Voltar
-        </button>
-      </div>
-    );
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
+      return <Loading />;
+    } else {
+      return <Navigate to="/players" />;
+    }
   } else {
     return (
       <PlayerCardCotainer>
