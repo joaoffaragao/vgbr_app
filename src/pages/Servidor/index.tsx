@@ -1,14 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Header from "../../components/Header";
 import { ServerContext } from "../../provider/serverProvider";
 import ServidorOff from "../ServidorOff";
 import { ServeContainer } from "./style";
+import Loading from "../../components/Loading";
 
 const Servidor = () => {
   const { server, team1, team2 } = useContext(ServerContext);
+  const [loading, setLoading] = useState<boolean>(true);
 
   if (!server.currentMap) {
-    return <ServidorOff />;
+    setTimeout(() => {
+      console.log("teste");
+      setLoading(false);
+    }, 2000);
+
+    if (loading) {
+      return <Loading />;
+    } else {
+      return <ServidorOff />;
+    }
   }
 
   return (
