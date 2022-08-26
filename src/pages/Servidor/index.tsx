@@ -9,9 +9,7 @@ const Servidor = () => {
   const { server, team1, team2 } = useContext(ServerContext);
   const [loading, setLoading] = useState<boolean>(true);
 
-  console.log(!server.gameId);
-
-  if (!server.gameId) {
+  if (false) {
     if (loading) {
       setTimeout(() => {
         setLoading(false);
