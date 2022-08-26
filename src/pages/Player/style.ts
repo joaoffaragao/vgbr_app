@@ -7,27 +7,9 @@ export const PlayerCardCotainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  > header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    background-color: #c9c9c9;
-    height: 60px;
-
-    > button {
-      border-radius: 8px;
-      padding: 0.75rem;
-      border: none;
-      background-color: black;
-      color: white;
-      cursor: pointer;
-    }
-  }
   > main {
     width: 100%;
-    max-width: 500px;
+    max-width: 768px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,24 +17,33 @@ export const PlayerCardCotainer = styled.div`
     padding: 1rem 2rem;
     gap: 1rem;
 
-    > div {
-      width: 100%;
-      max-width: 300px;
+    > section {
       display: flex;
-      color: white;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
 
-      > img {
-        width: 50px;
-      }
-    }
-
-    .img_box {
-      background-color: red;
-      width: 75%;
-      > img {
+      > div {
         width: 100%;
+        max-width: 300px;
+        display: flex;
+        color: white;
+        align-items: center;
+        justify-content: space-between;
+
+        > img {
+          width: 50px;
+        }
+      }
+
+      .img_box {
+        background-color: red;
+        width: 75%;
+        > img {
+          width: 100%;
+        }
       }
     }
 
@@ -69,6 +60,13 @@ export const PlayerCardCotainer = styled.div`
         align-items: center;
         gap: 5px;
       }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    > main {
+      align-items: flex-start;
+      flex-direction: row;
     }
   }
 `;

@@ -65,13 +65,15 @@ const Player = () => {
       <PlayerCardCotainer>
         <Header link="/players" />
         <main>
-          <div>
-            <h2>{user.userName}</h2>
-            <img src={user.rankImg} alt="" />
-          </div>
-          <div className="img_box">
-            <img src={user.avatar} alt={user.userName} />
-          </div>
+          <section className="player__data">
+            <div>
+              <h2>{user.userName}</h2>
+              <img src={user.rankImg} alt="" />
+            </div>
+            <div className="img_box">
+              <img src={user.avatar} alt={user.userName} />
+            </div>
+          </section>
           <section className="playerInfos">
             <ul>
               {categoryList.map((categoria) => {

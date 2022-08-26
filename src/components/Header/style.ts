@@ -18,7 +18,7 @@ export const HeaderContainer = styled.header<IProps>`
   > main {
     height: 100%;
     width: 100%;
-    max-width: 1024px;
+    max-width: 800px;
     display: flex;
     align-items: center;
     justify-content: ${(props) => {
