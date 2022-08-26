@@ -6,16 +6,20 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   > main {
+    width: 100%;
     padding: 1rem 2rem;
+    max-width: 768px;
     > ul {
       > li {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        height: 50px;
         > button {
-          padding: 5px;
+          padding: 15px;
           cursor: pointer;
           background-color: black;
           color: white;

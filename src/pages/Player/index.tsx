@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import PlayerInfoCard from "../../components/PlayerInfoCard";
 import { UserContext } from "../../provider/UserProvider";
@@ -15,6 +15,8 @@ const Player = () => {
 
   const [categoryList, setCategoryList] = useState<ICategoria[]>([]);
   const { tagName } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     limparUser();
@@ -57,6 +59,14 @@ const Player = () => {
     return (
       <div>
         <h1>Carregando</h1>
+        <button
+          onClick={() => {
+            limparUser();
+            navigate(origin, { replace: true });
+          }}
+        >
+          Voltar
+        </button>
       </div>
     );
   } else {

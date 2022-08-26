@@ -29,6 +29,7 @@ const UserProvider = () => {
       setUser(userData);
     } catch (error) {
       console.log(error);
+      navigate(origin, { replace: true });
     }
     navigate(`/players/${player}`);
   }

@@ -13,6 +13,7 @@ export const HeaderContainer = styled.header<IProps>`
   padding: 0 2rem;
   background-color: #c9c9c9;
   height: 60px;
+  width: 100%;
   > button {
     border-radius: 8px;
     padding: 0.75rem;

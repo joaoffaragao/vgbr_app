@@ -4,8 +4,10 @@ export const ServeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
   > main {
     width: 100%;
+    max-width: 800px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -53,6 +55,7 @@ export const ServeContainer = styled.div`
       width: 100%;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
       gap: 16px;
 
       .team1 {
