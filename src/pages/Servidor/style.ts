@@ -48,5 +48,47 @@ export const ServeContainer = styled.div`
         font-weight: 600;
       }
     }
+
+    .players__box {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .team1 {
+        width: 100%;
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        > ul {
+          width: 100%;
+          list-style: none;
+          > li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+      }
+      .team2 {
+        width: 100%;
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        > ul {
+          width: 100%;
+          list-style: none;
+          > li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
   }
 `;

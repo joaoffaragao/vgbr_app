@@ -4,7 +4,7 @@ import { ServerContext } from "../../provider/serverProvider";
 import { ServeContainer } from "./style";
 
 const Servidor = () => {
-  const { server, proximoMapa } = useContext(ServerContext);
+  const { server, team1, team2 } = useContext(ServerContext);
 
   return (
     <ServeContainer>
@@ -32,17 +32,38 @@ const Servidor = () => {
           </div>
         </div>
 
-        <div className="proximo__map">
-          <h2>Proximo Mapa</h2>
-          <div className="mapa">
-            <h2>{proximoMapa.mapname}</h2>
-            <img src={proximoMapa.image} alt="" />
-            <div className="info__card">
-              <span>Mode:</span>
-              <span>{proximoMapa.mode}</span>
-            </div>
+        <section className="players__box">
+          <div className="team1">
+            <h3>{team1.name}</h3>
+            <img src={team1.image} alt="" />
+            <ul>
+              {team1.players &&
+                team1.players.map((player) => {
+                  return (
+                    <li key={player.user_id}>
+                      <span>{player.name}</span>
+                      <span>{player.platoon}</span>
+                    </li>
+                  );
+                })}
+            </ul>
           </div>
-        </div>
+          <div className="team2">
+            <h3>{team2.name}</h3>
+            <img src={team2.image} alt="" />
+            <ul>
+              {team2.players &&
+                team2.players.map((player) => {
+                  return (
+                    <li key={player.user_id}>
+                      <span>{player.name}</span>
+                      <span>{player.platoon}</span>
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
+        </section>
       </main>
     </ServeContainer>
   );

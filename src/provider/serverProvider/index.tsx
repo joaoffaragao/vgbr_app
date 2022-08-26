@@ -1,14 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import {
+  Iteam,
   requisicaoBuscaDadosServer,
-  requisicaoBuscaOProximoMapa,
+  requisicaoBuscaPalyersNoServidor,
 } from "../../service/api";
-import { IRotationMap, IServer } from "./interface";
+import { IServer } from "./interface";
 
 export interface IServerContextData {
   server: IServer;
-  proximoMapa: IRotationMap;
+  team1: Iteam;
+  team2: Iteam;
 }
 
 export const ServerContext = createContext<IServerContextData>(
@@ -17,29 +19,27 @@ export const ServerContext = createContext<IServerContextData>(
 
 const ServerProvider = () => {
   const [server, setServer] = useState<IServer>({} as IServer);
-  const [proximoMapa, setProximoMapa] = useState<IRotationMap>(
-    {} as IRotationMap
-  );
+  const [team1, setTeam1] = useState<Iteam>({} as Iteam);
+  const [team2, setTeam2] = useState<Iteam>({} as Iteam);
 
   async function buscaDadosServidor() {
-    try {
-      const data = await requisicaoBuscaDadosServer();
-      setServer(data.servers[0]);
-    } catch (error) {}
+    const data = await requisicaoBuscaDadosServer();
+    setServer(data.servers[0]);
   }
 
-  async function buscarProximoMapa() {
-    const mapa = await requisicaoBuscaOProximoMapa();
-    setProximoMapa(mapa);
+  async function buscarPlayersNoServer() {
+    const data = await requisicaoBuscaPalyersNoServidor();
+    setTeam1(data[0]);
+    setTeam2(data[1]);
   }
 
   useEffect(() => {
     buscaDadosServidor();
-    buscarProximoMapa();
+    buscarPlayersNoServer();
   }, []);
 
   return (
-    <ServerContext.Provider value={{ server, proximoMapa }}>
+    <ServerContext.Provider value={{ server, team1, team2 }}>
       <Outlet />
     </ServerContext.Provider>
   );

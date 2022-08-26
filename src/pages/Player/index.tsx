@@ -33,6 +33,7 @@ const Player = () => {
           keys !== "rankImg" &&
           keys !== "avatar" &&
           keys !== "skill" &&
+          keys !== "bestClass" &&
           keys !== "platoons"
         ) {
           const obj = {

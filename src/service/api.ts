@@ -1,5 +1,9 @@
 import axios from "axios";
-import { IRotation, IServerData } from "../provider/serverProvider/interface";
+import {
+  IRotation,
+  IRotationMap,
+  IServerData,
+} from "../provider/serverProvider/interface";
 import { IUser } from "../provider/UserProvider/interface";
 
 axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
@@ -41,6 +45,62 @@ export async function requisicaoBuscaDadosServer() {
   return data;
 }
 
+export interface IServerCompleto {
+  country: string;
+  currentMap: string;
+  currentMapImage: string;
+  description?: string;
+  gameId: string;
+  inQueue: number;
+  maxPlayerAmount: string;
+  mode: string;
+  official: false;
+  owner: string;
+  platform: string;
+  playerAmount: 64;
+  prefix: string;
+  region: string;
+  rotation: IRotationMap[];
+  settings: object;
+  smallmode: string;
+  teams: object;
+}
+
+export interface IDataServidor {
+  loading: [];
+  que: object;
+  serverinfo: object;
+  update_timestamp: number;
+  teams: Iteam[];
+}
+
+export interface Iteam {
+  faction: string;
+  image: string;
+  key: string;
+  name: string;
+  players: IPlayerONServer[];
+  shortName: string;
+  teamid: string;
+}
+
+export interface IPlayerONServer {
+  join_time: number;
+  latency: number;
+  name: string;
+  platoon: string;
+  player_id: number;
+  rank: number;
+  slot: number;
+  user_id: number;
+}
+export async function requisicaoBuscaPalyersNoServidor() {
+  const data = await api
+    .get<IDataServidor>(`https://api.gametools.network/bfv/players/?name=vgbr`)
+    .then((res) => res.data);
+  return data.teams;
+}
+
 export async function requisicaoBuscaOProximoMapa() {
   const data = await api
     .get<IRotation>(
@@ -48,7 +108,7 @@ export async function requisicaoBuscaOProximoMapa() {
     )
     .then((res) => res.data);
 
-  return data.rotation[0];
+  return data;
 }
 
 export interface IClan {

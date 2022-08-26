@@ -51,6 +51,8 @@ const UserProvider = () => {
     switch (nome) {
       case "joaoffa":
         return "jaoWick";
+      case "banditfv":
+        return "bandit_zz";
       default:
         return nome;
     }
@@ -62,6 +64,7 @@ const UserProvider = () => {
       let nome = alteraNome(membro.name);
       return nome;
     });
+    newArray.push("dmorandini");
     setListUser(newArray);
   }
 
