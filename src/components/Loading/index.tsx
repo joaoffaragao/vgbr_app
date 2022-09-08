@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 const Loading = () => {
   return (
     <LoadingContainer>
-      <Header link={origin} />
+      <Header string={origin} />
       <main>
         <Box sx={{ display: "flex" }}>
           <CircularProgress />

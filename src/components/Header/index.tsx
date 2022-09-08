@@ -1,27 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { HeaderContainer } from "./style";
 
 interface IProps {
-  link?: string;
+  string?: string;
 }
 
-const Header = ({ link }: IProps) => {
-  const navigate = useNavigate();
-
+const Header = ({ string }: IProps) => {
   return (
-    <HeaderContainer link={link}>
+    <HeaderContainer string={string}>
       <main>
-        <Link to={origin}>
-          <h1>VGBR</h1>
-        </Link>
-        {link && (
-          <button
-            onClick={() => {
-              navigate(link, { replace: true });
-            }}
-          >
+        {string ? (
+          <Link className="LogoHeader" to={origin}>
+            <h1>VGBR</h1>
+          </Link>
+        ) : (
+          <h1 className="LogoHeader">VGBR</h1>
+        )}
+        {string && (
+          <Link className="VoltarBtn" to={string}>
             voltar
-          </button>
+          </Link>
         )}
       </main>
     </HeaderContainer>

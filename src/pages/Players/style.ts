@@ -31,10 +31,45 @@ export const Container = styled.div`
         gap: 10px;
         cursor: pointer;
         border: 1px solid black;
-      }
-      > li:hover {
-        background-color: white;
-        color: black;
+        > .MembrosBox {
+          width: 100%;
+          height: 100px;
+          display: flex;
+
+          > .imgBox {
+            height: 100px;
+            width: 100px;
+            border-radius: 8px;
+            display: flex;
+            > img {
+              border-radius: 8px 0 0 8px;
+              width: 100%;
+              height: 100%;
+            }
+          }
+          > .Info {
+            width: calc(100% - 100px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 16px;
+            font-size: 8px;
+            color: black;
+            padding: 10px 16px;
+            .MapName {
+              width: 100%;
+              font-size: 16px;
+            }
+            .Players,
+            .Fila {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              font-size: 14px;
+            }
+          }
+        }
       }
     }
 

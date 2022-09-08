@@ -42,6 +42,8 @@ const UserProvider = () => {
     setUser({} as IUser);
   }
 
+  useEffect(() => {}, []);
+
   function alteraNome(nome: string) {
     switch (nome) {
       case "joaoffa":
@@ -57,6 +59,7 @@ const UserProvider = () => {
 
   async function listaDeMembros() {
     const members = await requisicaoListaDeMembros();
+    console.log(members);
     const newArray = members.map((membro) => {
       let nome = alteraNome(membro.name);
       return nome;

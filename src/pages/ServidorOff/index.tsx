@@ -5,7 +5,7 @@ import iconeChorando from "../../assets/imgs/confused-color-icon.svg";
 const ServidorOff = () => {
   return (
     <ContainerServidorOff>
-      <Header link={origin} />
+      <Header string={"/dashBoard"} />
       <main>
         <h1>Servidor está off</h1>
         <img src={iconeChorando} alt="" />

@@ -6,19 +6,22 @@ import Player from "../pages/Player";
 import Players from "../pages/Players";
 import ServerProvider from "../provider/serverProvider";
 import ServidorOff from "../pages/ServidorOff";
+import DashBoard from "../pages/dashBoard";
 
 const MainRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="home" />} />
       <Route path="*" element={<Navigate to="/" />} />
-      <Route element={<ServerProvider />}>
-        <Route path="home" element={<Home />} />
-        <Route path="servidor" element={<Servidor />} />
-        <Route path="/servidorOFF" element={<ServidorOff />} />
-      </Route>
 
       <Route element={<UserProvider />}>
+        <Route element={<ServerProvider />}>
+          <Route path="/dashBoard" element={<DashBoard />} />
+          <Route path="home" element={<Home />} />
+          <Route path="servidor" element={<Servidor />} />
+          <Route path="/servidorOFF" element={<ServidorOff />} />
+        </Route>
+
         <Route path="players" element={<Players />} />
         <Route path="players/:tagName" element={<Player />} />
       </Route>

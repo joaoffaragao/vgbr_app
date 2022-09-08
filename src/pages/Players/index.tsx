@@ -28,7 +28,7 @@ const Players = () => {
   } else {
     return (
       <Container>
-        <Header link={origin} />
+        <Header string={"/dashBoard"} />
         <main>
           <ul>
             {listUser.map((player) => {
