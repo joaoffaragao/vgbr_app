@@ -51,7 +51,8 @@ export const Container = styled.div`
           gap: 16px;
           font-size: 8px;
           color: black;
-          padding: 10px 16px;
+          padding: 10px 2px;
+
           .MapName {
             width: 100%;
             font-size: 16px;
