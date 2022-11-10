@@ -11,6 +11,8 @@ const GlobalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+    background: black;
+
   }
   .App{
     width: 100vw;
