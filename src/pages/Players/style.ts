@@ -11,6 +11,7 @@ export const Container = styled.div`
     width: 100%;
     padding: 1rem 2rem;
     max-width: 800px;
+    background: #000000;
     > ul {
       width: 100%;
       display: flex;

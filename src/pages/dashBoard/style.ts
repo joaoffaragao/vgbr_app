@@ -19,7 +19,7 @@ export const Container = styled.div`
       font-size: 2rem;
       font-weight: 600;
       background-color: white;
-      color: white;
+      color: black;
       border: 1px solid #0c0c0c;
       border-radius: 8px;
 
@@ -60,6 +60,9 @@ export const Container = styled.div`
             display: flex;
             justify-content: space-between;
             font-size: 14px;
+          }
+          .serverOutText {
+            font-size: 24px;
           }
         }
       }

@@ -31,7 +31,9 @@ const UserProvider = () => {
   async function buscarUserID(id: string) {
     try {
       const userData = await requisicaoBuscaDadosPlayerID(id);
-      setUser(userData);
+      if (user.id !== userData.id) {
+        setUser(userData);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +61,6 @@ const UserProvider = () => {
 
   async function listaDeMembros() {
     const members = await requisicaoListaDeMembros();
-    console.log(members);
     const newArray = members.map((membro) => {
       let nome = alteraNome(membro.name);
       return nome;

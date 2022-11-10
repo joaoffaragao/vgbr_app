@@ -13,7 +13,7 @@ export const api = axios.create({
   baseURL: "https://api.gametools.network/bfv/",
 });
 api.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
-// api.defaults.headers.get["Content-Type"] = "application/json;charset=utf-8";
+api.defaults.headers.get["Content-Type"] = "application/json;charset=utf-8";
 
 export async function requisicaoBuscaDadosPlayer(player: string) {
   const data = await api

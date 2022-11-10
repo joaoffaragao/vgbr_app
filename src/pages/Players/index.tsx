@@ -21,7 +21,7 @@ const Players = () => {
       setTimeout(() => {
         setLoading(false);
       }, 2000);
-      return <Loading />;
+      return <Loading paginaAnterior="/dashBoard" />;
     } else {
       return <Navigate to={origin} />;
     }

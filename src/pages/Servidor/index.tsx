@@ -6,15 +6,15 @@ import Loading from "../../components/Loading";
 import { Navigate } from "react-router-dom";
 
 const Servidor = () => {
-  const { server, team1, team2 } = useContext(ServerContext);
+  const { server, team1, team2, serverStatus } = useContext(ServerContext);
   const [loading, setLoading] = useState<boolean>(true);
 
-  if (!server.gameId) {
+  if (!serverStatus) {
     if (loading) {
       setTimeout(() => {
         setLoading(false);
       }, 5000);
-      return <Loading />;
+      return <Loading paginaAnterior="/dashBoard" />;
     } else {
       return <Navigate to="/servidorOFF" />;
     }
