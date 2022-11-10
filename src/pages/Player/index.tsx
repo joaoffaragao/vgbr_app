@@ -63,7 +63,7 @@ const Player = () => {
   } else {
     return (
       <PlayerCardCotainer>
-        <Header link="/players" />
+        <Header string="/players" />
         <main>
           <section className="player__data">
             <div>

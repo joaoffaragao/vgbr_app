@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IProps {
-  link?: string;
+  string?: string;
 }
 
 export const HeaderContainer = styled.header<IProps>`
@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header<IProps>`
   align-items: center;
   justify-content: center;
   padding: 0 2rem;
-  background-color: #999999;
+  background-color: #000;
   height: 60px;
   width: 100%;
   -webkit-box-shadow: 0px 7px 18px 2px rgba(0, 0, 0, 0.75);
@@ -22,23 +22,24 @@ export const HeaderContainer = styled.header<IProps>`
     display: flex;
     align-items: center;
     justify-content: ${(props) => {
-      return props.link ? "space-between" : "center";
+      return props.string ? "space-between" : "center";
     }};
 
-    > a {
+    > .LogoHeader {
       text-decoration: none;
-      color: #000;
+      color: white;
     }
 
-    > button {
+    > .VoltarBtn {
       border-radius: 8px;
       padding: 0.75rem;
       border: none;
       background-color: black;
       color: white;
       cursor: pointer;
+      text-decoration: none;
     }
-    > button:hover {
+    > .VoltarBtn:hover {
       background-color: white;
       color: black;
     }

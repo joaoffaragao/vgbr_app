@@ -1,18 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import { Container } from "./style";
+import Background from "../../components/background";
 
 const Home = () => {
-  const navigate = useNavigate();
-
   return (
-    <Container>
-      <Header />
-      <nav>
-        <button onClick={() => navigate("/servidor")}>Server</button>
-        <button onClick={() => navigate("/players")}>Membros</button>
-      </nav>
-    </Container>
+    <Background>
+      <Container>
+        <Header />
+        <main>
+          <div className="Link__Box">
+            <Link className="LinkEntrar" to="/dashboard">
+              Entrar
+            </Link>
+          </div>
+        </main>
+      </Container>
+    </Background>
   );
 };
 

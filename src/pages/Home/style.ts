@@ -4,29 +4,45 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  background-color: transparent;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  align-items: center;
+  position: absolute;
+  top: 0px;
 
-  > nav {
-    padding: 1rem;
+  > main {
     display: flex;
-    flex-wrap: wrap;
+    height: 100%;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 2rem;
-    > button {
-      width: 200px;
-      height: 200px;
-      border-radius: 8px;
-      border: none;
-      font-size: 2rem;
-      font-weight: 600;
-      background-color: #0c0c0c;
-      color: white;
-      cursor: pointer;
-    }
 
-    > button:hover {
-      background-color: #4d4d4d;
-      border: 1px solid black;
+    > .Link__Box {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+      padding-bottom: 50px;
+
+      .LinkEntrar {
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 64px;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        width: 300px;
+        height: 75px;
+        border-radius: 8px;
+        display: flex;
+      }
     }
   }
 `;

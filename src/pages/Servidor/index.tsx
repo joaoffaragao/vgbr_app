@@ -21,7 +21,7 @@ const Servidor = () => {
   } else {
     return (
       <ServeContainer>
-        <Header link={origin} />
+        <Header string={"/dashBoard"} />
         <main>
           <h1>{server.prefix}</h1>
           <div className="mapa">
