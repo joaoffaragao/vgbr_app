@@ -3,13 +3,22 @@ import { LoadingContainer } from "./style";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-const Loading = () => {
+interface IProps {
+  paginaAnterior: string;
+}
+
+const Loading = ({ paginaAnterior }: IProps) => {
   return (
     <LoadingContainer>
-      <Header string={origin} />
+      <Header string={paginaAnterior} />
       <main>
         <Box sx={{ display: "flex" }}>
-          <CircularProgress />
+          <img
+            src={
+              "https://velhaguardabrasil.com.br/wp-content/uploads/2022/07/VELHA-GUARDA-BRASIL-RED-PINK-3.png"
+            }
+            alt=""
+          />
         </Box>
       </main>
     </LoadingContainer>

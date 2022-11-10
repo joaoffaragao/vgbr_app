@@ -55,8 +55,8 @@ const Player = () => {
     if (loading) {
       setTimeout(() => {
         setLoading(false);
-      }, 5000);
-      return <Loading />;
+      }, 100000);
+      return <Loading paginaAnterior="/players" />;
     } else {
       return <Navigate to="/players" />;
     }

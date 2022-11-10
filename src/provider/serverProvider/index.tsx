@@ -40,9 +40,11 @@ const ServerProvider = () => {
   }
 
   useEffect(() => {
-    buscaDadosServidor();
-    if (serverStatus) {
-      buscarPlayersNoServer();
+    if (!serverStatus) {
+      buscaDadosServidor();
+      if (serverStatus) {
+        buscarPlayersNoServer();
+      }
     }
   }, []);
 

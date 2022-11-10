@@ -13,7 +13,8 @@ export const ContainerServidorOff = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 1rem;
-    > img {
+    color: white;
+    / > img {
       max-width: 500px;
     }
   }
