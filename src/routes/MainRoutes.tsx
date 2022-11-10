@@ -7,12 +7,14 @@ import Players from "../pages/Players";
 import ServerProvider from "../provider/serverProvider";
 import ServidorOff from "../pages/ServidorOff";
 import DashBoard from "../pages/dashBoard";
+import Intro from "../pages/Intro/intro";
 
 const MainRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="home" />} />
       <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/teste" element={<Intro />} />
 
       <Route element={<UserProvider />}>
         <Route element={<ServerProvider />}>
