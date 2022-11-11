@@ -11,7 +11,7 @@ import servidorOfflogo from "../../assets/imgs/confused-color-icon.svg";
 const DashBoard = () => {
   const navigate = useNavigate();
 
-  const { server, serverStatus } = useContext(ServerContext);
+  const { servers, serverForadoAr } = useContext(ServerContext);
   const { listUser } = useContext(UserContext);
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -28,27 +28,34 @@ const DashBoard = () => {
       <Container>
         <Header string={origin} />
         <nav>
-          {serverStatus ? (
-            <button onClick={() => navigate("/servidor")}>
-              <div className="box_server">
-                <div className="imgBox">
-                  <img src={server.url} alt="" />
-                </div>
-                <div className="Info">
-                  <h2 className="MapName">{server.currentMap}</h2>
-                  <div className="Players">
-                    <span>Players:</span>
-                    <span>{server.serverInfo}</span>
+          {servers.length ? (
+            servers.map((server) => {
+              return (
+                <button
+                  key={server.gameId}
+                  onClick={() => navigate(`/servidor/${server.gameId}`)}
+                >
+                  <div className="box_server">
+                    <div className="imgBox">
+                      <img src={server.url} alt="" />
+                    </div>
+                    <div className="Info">
+                      <h2 className="MapName">{server.currentMap}</h2>
+                      <div className="Players">
+                        <span>Players:</span>
+                        <span>{server.serverInfo}</span>
+                      </div>
+                      <div className="Fila">
+                        <span>Fila:</span>
+                        <span>{server.inQue}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="Fila">
-                    <span>Fila:</span>
-                    <span>{server.inQue}</span>
-                  </div>
-                </div>
-              </div>
-            </button>
+                </button>
+              );
+            })
           ) : (
-            <button onClick={() => navigate("/servidor")}>
+            <button onClick={() => serverForadoAr()}>
               <div className="box_server">
                 <div className="imgBox">
                   <img src={servidorOfflogo} alt="" />

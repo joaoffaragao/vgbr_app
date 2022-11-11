@@ -23,11 +23,11 @@ const MainRoutes = () => {
 
       <Route element={<UserProvider />}>
         <Route element={<ServerProvider />}>
-          <Route path="/dashBoard" element={<DashBoard />} />
+          <Route path="dashBoard" element={<DashBoard />} />
           <Route path="home" element={<Home />} />
-          <Route path="servidor" element={<Servidor />} />
-          <Route path="/servidorOFF" element={<ServidorOff />} />
-          <Route path="/rank" element={<Rank />} />
+          <Route path="/servidor/:gameId" element={<Servidor />} />
+          <Route path="servidorOFF" element={<ServidorOff />} />
+          <Route path="rank" element={<Rank />} />
         </Route>
 
         <Route path="players" element={<Players />} />
