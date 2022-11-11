@@ -22,7 +22,6 @@ const LoginProvider = () => {
     try {
       const token = await requestLogin(data);
       localStorage.setItem("vgbr:token", token);
-      console.log(token);
       addToken(token);
       toastSucesso("Login Feito com Sucesso");
       navigate("/staff");

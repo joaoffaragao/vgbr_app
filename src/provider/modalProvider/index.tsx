@@ -1,6 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-import BackgroundModal from "../../components/modais/BackgroundModal";
-import NovoBan from "../../components/modais/novoBan";
 
 interface IModalStaff {
   abrirFecharModalNovoban: () => void;
