@@ -51,7 +51,7 @@ const UserProvider = () => {
       case "joaoffa":
         return "JaoWick";
       case "banditfv":
-        return "bandit_zz";
+        return "b4nditZERA";
       case "DENIO2020":
         return "-D3NIO";
       default:
@@ -66,6 +66,7 @@ const UserProvider = () => {
       return nome;
     });
     newArray.push("dmorandini");
+    newArray.push("r1cKLemmer");
     setListUser(newArray);
   }
 
