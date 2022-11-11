@@ -94,9 +94,11 @@ export interface IPlayerONServer {
   slot: number;
   user_id: number;
 }
-export async function requisicaoBuscaPalyersNoServidor() {
+export async function requisicaoBuscaPalyersNoServidor(id?: string) {
   const data = await api
-    .get<IDataServidor>(`https://api.gametools.network/bfv/players/?name=vgbr`)
+    .get<IDataServidor>(
+      `https://api.gametools.network/bfv/players/?gameid=${id}`
+    )
     .then((res) => res.data);
   return data.teams;
 }
