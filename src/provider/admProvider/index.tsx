@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import getProfileRequest from "../../service/getProfileRequest";
-
-import { useForm } from "react-hook-form";
+import getProfileRequest from "../../service/server/getProfileRequest";
+import { ToastContext } from "../toastyProvider";
 
 export interface IAdm {
   id: string;
@@ -28,6 +27,7 @@ interface IAdmContext {
   getProfile: () => void;
   token: string;
   addToken: (token: string) => void;
+  logOut: () => void;
 }
 
 export const AdmContext = createContext<IAdmContext>({} as IAdmContext);
@@ -42,7 +42,6 @@ const AdmProvider = () => {
   async function getProfile() {
     try {
       const TokenArmazeado = localStorage.getItem("vgbr:token");
-
       if (TokenArmazeado) {
         const adm = await getProfileRequest(TokenArmazeado);
         setAdm(adm);
@@ -58,8 +57,21 @@ const AdmProvider = () => {
     setToken(token);
   }
 
+  async function loginVerify() {
+    await getProfile();
+  }
+
+  function logOut() {
+    setAdm({} as IAdm);
+    localStorage.clear();
+  }
+
+  useEffect(() => {
+    loginVerify();
+  }, []);
+
   return (
-    <AdmContext.Provider value={{ adm, getProfile, token, addToken }}>
+    <AdmContext.Provider value={{ adm, getProfile, token, addToken, logOut }}>
       <Outlet />
     </AdmContext.Provider>
   );

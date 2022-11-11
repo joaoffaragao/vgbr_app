@@ -38,8 +38,8 @@ const Login = () => {
 
   return (
     <Container>
-      <h1>Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>Login</h1>
         <div className="InputBox">
           <label htmlFor="email">Email</label>
           <input
@@ -50,7 +50,7 @@ const Login = () => {
           {errors.email?.message && <p>{errors.email?.message?.toString()}</p>}
         </div>
         <div className="InputBox">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password</label>
           <input
             placeholder={"Digite sua senha"}
             type={"password"}

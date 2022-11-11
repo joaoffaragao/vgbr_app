@@ -1,8 +1,8 @@
-import { IAdm } from "../provider/admProvider";
-import { api } from "./api";
+import { IAdm } from "../../provider/admProvider";
+import server from "./server";
 
 async function getProfileRequest(TokenArmazeado: string): Promise<IAdm> {
-  const response = await api.get<IAdm>("/profile", {
+  const response = await server.get<IAdm>("/user/profile", {
     headers: {
       Authorization: `Bearer ${TokenArmazeado}`,
     },

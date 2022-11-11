@@ -1,7 +1,6 @@
 import "react-toastify/dist/ReactToastify.css";
 import { createContext, ReactNode } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { Outlet } from "react-router-dom";
 
 interface IToastContext {
   toastSucesso: (mensagem: string) => void;

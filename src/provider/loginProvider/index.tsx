@@ -1,7 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { ISession } from "../../pages/login";
-import { requestLogin } from "../../service/requestLogin";
+import { requestLogin } from "../../service/server/requestLogin";
 import { AdmContext } from "../admProvider";
 import { ToastContext } from "../toastyProvider";
 
@@ -22,11 +22,12 @@ const LoginProvider = () => {
     try {
       const token = await requestLogin(data);
       localStorage.setItem("vgbr:token", token);
+      console.log(token);
       addToken(token);
       toastSucesso("Login Feito com Sucesso");
       navigate("/staff");
     } catch (error) {
-      setErroRequisicao("Email e senha sao invalidos");
+      setErroRequisicao("Email e senha são invalidos");
     }
   }
 
