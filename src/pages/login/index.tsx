@@ -2,9 +2,9 @@ import Container from "./style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { useForm } from "react-hook-form/dist/useForm";
 
 import { LoginContext } from "../../provider/loginProvider";
+import { useForm } from "react-hook-form";
 
 const schema = yup
   .object({
@@ -47,7 +47,7 @@ const Login = () => {
             type={"text"}
             {...register("email")}
           />
-          <p>error={errors.email?.message?.toString()}</p>
+          {errors.email?.message && <p>{errors.email?.message?.toString()}</p>}
         </div>
         <div className="InputBox">
           <label htmlFor="password">Password:</label>
@@ -56,7 +56,9 @@ const Login = () => {
             type={"password"}
             {...register("password")}
           />
-          <p>error={errors.password?.message?.toString()}</p>
+          {errors.password?.message && (
+            <p>{errors.password?.message?.toString()}</p>
+          )}
         </div>
         {erroRequisicao && <span>{erroRequisicao}</span>}
         <button>Entrar</button>

@@ -12,7 +12,7 @@ import Rank from "../pages/Rank";
 import AdmProvider from "../provider/admProvider";
 import LoginProvider from "../provider/loginProvider";
 import Staff from "../pages/staff";
-import { Login } from "@mui/icons-material";
+import Login from "../pages/login";
 
 const MainRoutes = () => {
   return (

@@ -1,7 +1,11 @@
 import Container from "./style";
 
 const Staff = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <h1>Staff</h1>
+    </Container>
+  );
 };
 
 export default Staff;

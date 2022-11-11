@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import getProfileRequest from "../../service/getProfileRequest";
 
 import { useForm } from "react-hook-form";
@@ -59,9 +59,9 @@ const AdmProvider = () => {
   }
 
   return (
-    <AdmContext.Provider
-      value={{ adm, getProfile, token, addToken }}
-    ></AdmContext.Provider>
+    <AdmContext.Provider value={{ adm, getProfile, token, addToken }}>
+      <Outlet />
+    </AdmContext.Provider>
   );
 };
 
