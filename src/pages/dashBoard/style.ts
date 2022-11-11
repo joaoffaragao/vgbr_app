@@ -12,6 +12,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    height: 75vh;
+
     > button {
       width: 100%;
       height: 102px;
@@ -49,7 +51,8 @@ export const Container = styled.div`
           gap: 16px;
           font-size: 8px;
           color: black;
-          padding: 10px 16px;
+          padding: 10px 2px;
+
           .MapName {
             width: 100%;
             font-size: 16px;
@@ -118,12 +121,13 @@ export const Container = styled.div`
 
     @media screen and (min-width: 768px) {
       > button {
+        display: flex;
         width: 250px;
         height: 300px;
 
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
+        align-items: center;
+        justify-content: center;
 
         > .box_server {
           align-items: flex-start;

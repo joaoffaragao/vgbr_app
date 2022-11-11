@@ -4,9 +4,10 @@ export const ServeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
   align-items: center;
   gap: 1.5rem;
-
+  color: white;
   > main {
     width: 100%;
     max-width: 800px;

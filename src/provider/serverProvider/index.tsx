@@ -27,9 +27,10 @@ const ServerProvider = () => {
   async function buscaDadosServidor() {
     const data = await requisicaoBuscaDadosServer();
     if (data.servers[0]) {
-      setServerStatus(false);
-    } else {
+      setServerStatus(true);
       setServer(data.servers[0]);
+    } else {
+      setServerStatus(false);
     }
   }
 
@@ -42,11 +43,11 @@ const ServerProvider = () => {
   useEffect(() => {
     if (!serverStatus) {
       buscaDadosServidor();
-      if (serverStatus) {
-        buscarPlayersNoServer();
-      }
     }
-  }, []);
+    if (serverStatus) {
+      buscarPlayersNoServer();
+    }
+  }, [serverStatus]);
 
   return (
     <ServerContext.Provider value={{ server, team1, team2, serverStatus }}>

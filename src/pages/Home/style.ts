@@ -26,7 +26,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: flex-end;
       gap: 1rem;
-      padding-bottom: 50px;
+      padding-bottom: 75px;
 
       .LinkEntrar {
         cursor: pointer;
