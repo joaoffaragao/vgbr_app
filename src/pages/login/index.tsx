@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 import { LoginContext } from "../../provider/loginProvider";
 import { useForm } from "react-hook-form";
+import Header from "../../components/Header";
 
 const schema = yup
   .object({
@@ -38,6 +39,7 @@ const Login = () => {
 
   return (
     <Container>
+      <Header string="/dashboard" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Login</h1>
         <div className="InputBox">
