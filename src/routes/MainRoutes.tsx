@@ -9,6 +9,10 @@ import ServidorOff from "../pages/ServidorOff";
 import DashBoard from "../pages/dashBoard";
 import Intro from "../pages/Intro/intro";
 import Rank from "../pages/Rank";
+import AdmProvider from "../provider/admProvider";
+import LoginProvider from "../provider/loginProvider";
+import Staff from "../pages/staff";
+import Login from "../pages/login";
 
 const MainRoutes = () => {
   return (
@@ -28,6 +32,13 @@ const MainRoutes = () => {
 
         <Route path="players" element={<Players />} />
         <Route path="players/:tagName" element={<Player />} />
+      </Route>
+
+      <Route element={<AdmProvider />}>
+        <Route element={<LoginProvider />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
+        <Route path="/staff" element={<Staff />} />
       </Route>
     </Routes>
   );

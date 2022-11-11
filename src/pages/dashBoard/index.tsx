@@ -68,6 +68,7 @@ const DashBoard = () => {
             </div>
           </button>
           <button onClick={() => navigate("/rank")}>Rank</button>
+          <button onClick={() => navigate("/login")}>Staff</button>
         </nav>
       </Container>
     );
