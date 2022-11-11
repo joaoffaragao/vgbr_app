@@ -40,31 +40,35 @@ const Login = () => {
   return (
     <Container>
       <Header string="/dashboard" />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>Login</h1>
-        <div className="InputBox">
-          <label htmlFor="email">Email</label>
-          <input
-            placeholder={"Digite seu email"}
-            type={"text"}
-            {...register("email")}
-          />
-          {errors.email?.message && <p>{errors.email?.message?.toString()}</p>}
-        </div>
-        <div className="InputBox">
-          <label htmlFor="password">Password</label>
-          <input
-            placeholder={"Digite sua senha"}
-            type={"password"}
-            {...register("password")}
-          />
-          {errors.password?.message && (
-            <p>{errors.password?.message?.toString()}</p>
-          )}
-        </div>
-        {erroRequisicao && <span>{erroRequisicao}</span>}
-        <button>Entrar</button>
-      </form>
+      <main>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h1>Login</h1>
+          <div className="InputBox">
+            <label htmlFor="email">Email</label>
+            <input
+              placeholder={"Digite seu email"}
+              type={"text"}
+              {...register("email")}
+            />
+            {errors.email?.message && (
+              <p>{errors.email?.message?.toString()}</p>
+            )}
+          </div>
+          <div className="InputBox">
+            <label htmlFor="password">Password</label>
+            <input
+              placeholder={"Digite sua senha"}
+              type={"password"}
+              {...register("password")}
+            />
+            {errors.password?.message && (
+              <p>{errors.password?.message?.toString()}</p>
+            )}
+          </div>
+          {erroRequisicao && <span>{erroRequisicao}</span>}
+          <button>Entrar</button>
+        </form>
+      </main>
     </Container>
   );
 };
