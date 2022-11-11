@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState } from "react";
-import Background from "../../components/background";
 import BackgroundModal from "../../components/modais/BackgroundModal";
 import NovoBan from "../../components/modais/novoBan";
 
