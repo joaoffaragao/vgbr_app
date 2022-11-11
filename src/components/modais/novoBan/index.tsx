@@ -1,10 +1,17 @@
+import BackgroundModal from "../BackgroundModal";
 import Container from "./style";
+import { AiOutlineClose } from "react-icons/ai";
 
 const NovoBan = () => {
   return (
-    <Container>
-      <h1>Modal Aberto</h1>
-    </Container>
+    <BackgroundModal>
+      <Container>
+        <header>
+          <h1>Novo Ban</h1>
+          <AiOutlineClose color="white" size={"2rem"} />
+        </header>
+      </Container>
+    </BackgroundModal>
   );
 };
 

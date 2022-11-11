@@ -2,11 +2,15 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
+import NovoBan from "../../components/modais/novoBan";
 import { AdmContext } from "../../provider/admProvider";
+import { ModalStaffContext } from "../../provider/modalProvider";
 import Container from "./style";
 
 const Staff = () => {
   const { adm, logOut, getProfile } = useContext(AdmContext);
+  const { novoBanEstado, abrirFecharModalNovoban } =
+    useContext(ModalStaffContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,6 +40,7 @@ const Staff = () => {
             </button>
           </header>
         </main>
+        {novoBanEstado && <NovoBan />}
       </Container>
     );
   }
