@@ -10,6 +10,9 @@ const Container = styled.div`
     max-width: 20rem;
     padding: 1rem;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     > header {
       .nickBox {
         display: flex;
@@ -17,6 +20,18 @@ const Container = styled.div`
       }
       display: flex;
       justify-content: space-between;
+    }
+    > main {
+      > button {
+        height: 2rem;
+        width: 100%;
+        max-width: 320px;
+        border: none;
+        border-radius: 8px;
+        background: white;
+        font-size: 1rem;
+        font-weight: bold;
+      }
     }
   }
 `;

@@ -13,6 +13,7 @@ import AdmProvider from "../provider/admProvider";
 import LoginProvider from "../provider/loginProvider";
 import Staff from "../pages/staff";
 import Login from "../pages/login";
+import BanProvider from "../provider/banProvider";
 
 const MainRoutes = () => {
   return (
@@ -38,7 +39,9 @@ const MainRoutes = () => {
         <Route element={<LoginProvider />}>
           <Route path="/login" element={<Login />} />
         </Route>
-        <Route path="/staff" element={<Staff />} />
+        <Route element={<BanProvider />}>
+          <Route path="/staff" element={<Staff />} />
+        </Route>
       </Route>
     </Routes>
   );
