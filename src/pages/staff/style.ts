@@ -22,6 +22,9 @@ const Container = styled.div`
       justify-content: space-between;
     }
     > main {
+      display:flex;
+      flex-direction: column;
+      gap: 1rem;
       > button {
         height: 2rem;
         width: 100%;

@@ -14,6 +14,7 @@ import LoginProvider from "../provider/loginProvider";
 import Staff from "../pages/staff";
 import Login from "../pages/login";
 import BanProvider from "../provider/banProvider";
+import BanList from "../pages/banList";
 
 const MainRoutes = () => {
   return (
@@ -41,6 +42,7 @@ const MainRoutes = () => {
         </Route>
         <Route element={<BanProvider />}>
           <Route path="/staff" element={<Staff />} />
+          <Route path="/staff/banList" element={<BanList />} />
         </Route>
       </Route>
     </Routes>

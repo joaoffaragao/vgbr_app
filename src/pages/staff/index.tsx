@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import NovoBan from "../../components/modais/novoBan";
@@ -46,6 +46,7 @@ const Staff = () => {
             >
               novo ban
             </button>
+            <button onClick={()=>{ navigate("/staff/banList")}}>Lista Banidos</button>
           </main>
         </main>
         {novoBanEstado && <NovoBan />}

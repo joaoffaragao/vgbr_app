@@ -26,7 +26,7 @@ interface IAdmContext {
   adm: IAdm;
   getProfile: () => void;
   token: string;
-  addToken: (token: string) => void;
+  addToken: (token: string) => Promise<void>;
   logOut: () => void;
 }
 
@@ -41,13 +41,8 @@ const AdmProvider = () => {
 
   async function getProfile() {
     try {
-      const TokenArmazeado = localStorage.getItem("vgbr:token");
-      if (TokenArmazeado) {
-        const adm = await getProfileRequest(TokenArmazeado);
-        setAdm(adm);
-      } else {
-        navigate("/login");
-      }
+      const adm = await getProfileRequest(token);
+      setAdm(adm);
     } catch (error) {
       navigate("/login");
     }
@@ -57,8 +52,13 @@ const AdmProvider = () => {
     setToken(token);
   }
 
-  async function loginVerify() {
-    await getProfile();
+  function loginVerify() {
+    const TokenArmazeado = localStorage.getItem("vgbr:token");
+    if (TokenArmazeado) {
+      addToken(token)
+    } else {
+      navigate("/login");
+    }
   }
 
   function logOut() {
@@ -68,6 +68,7 @@ const AdmProvider = () => {
 
   useEffect(() => {
     loginVerify();
+    getProfile();
   }, []);
 
   return (
