@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const ModalStaffProvider = ({ children }: IProps) => {
-  const [novoBanEstado, SetNovoBanEstado] = useState(true);
+  const [novoBanEstado, SetNovoBanEstado] = useState(false);
 
   function abrirFecharModalNovoban() {
     SetNovoBanEstado(!novoBanEstado);
