@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Header from "../../components/Header";
 import { BanContext } from "../../provider/banProvider";
 import { IBan } from "../../service/server/requestNewban";
@@ -7,13 +7,16 @@ import Container from "./style";
 const BanList = () => {
   const { banList } = useContext(BanContext);
 
-  function diasRestantes(player: IBan): number {
-    const dateNow = new Date();
-    const futureDate = new Date("2028/10/12");
-    if (player.created) {
-      console.log(futureDate.getDate());
-    }
-    return 2;
+  function diasRestantes(ban: IBan): number {
+
+    const d1  = new Date();
+    const d2    = new Date(ban.created!);
+    const diffInMs   = new Date(d1).getTime() - new Date(d2).getTime() 
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+    const diasRestantes = ban.punicao - diffInDays
+
+    return  Math.round(diasRestantes);
   }
 
   return (
@@ -21,17 +24,24 @@ const BanList = () => {
       <Header string="/staff" />
       <main>
         <ul>
-          {banList.map((player) => {
+          {banList.filter((ban) =>{
+            return (diasRestantes(ban)) > 1
+          }).map((ban) => {
             return (
-              <li key={player.id + player.motivo}>
-                <h2>{player.id}</h2>
-                <p>{player.motivo}</p>
+              <li key={ban.id + ban.motivo}>
+                <div>
+                  <h2>Nick: {ban.playerName}</h2>
+                  <p>Motivo: {ban.motivo}</p>
 
-                {diasRestantes(player) > 1 ? (
-                  <p>{`${player.punicao} dias restantes`}</p>
-                ) : (
-                  <p>{`${player.punicao} dia restante`}</p>
-                )}
+                  {diasRestantes(ban) !== 1 ? (
+                    <p>dias restantes: {`${diasRestantes(ban)}`}</p>
+                  ) : (
+                    <p>dia restante: {`${diasRestantes(ban)}`}</p>
+                  )}
+                </div>
+                <button onClick={()=>{
+                  console.log(`perdoa ${ban.playerName}`)
+                }}>Perdoar</button>
               </li>
             );
           })}

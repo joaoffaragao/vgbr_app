@@ -12,16 +12,26 @@ const Container = styled.div`
         ul{
             width: 100%;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             gap: 1rem;
             padding: 0 10px;
             li{
+                width: 100%;
                 display: flex;
-                flex-direction: column;
-                gap: 1rem;
-                h2{
-                    font-size: 14px
+                flex-direction: row;
+                justify-content: space-between;
+                min-width: 300px;
+
+                div{ 
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    h2{
+                        font-size: 14px
+                    }
                 }
+
             }
         }
     }

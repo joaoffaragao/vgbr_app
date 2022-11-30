@@ -20,6 +20,7 @@ const schema = yup
 
 export interface INewBanRequest {
   playerId: string;
+  playerName: string;
   punicao: Number;
   motivo: string;
 }
@@ -61,6 +62,17 @@ const NovoBan = () => {
                 placeholder={"Digite o id do jogador "}
                 type="text"
                 {...register("playerId")}
+              />
+              {errors.playerId?.message && (
+                <p>{errors.playerId?.message?.toString()}</p>
+              )}
+            </div>
+            <div className="InputBox">
+              <label htmlFor="email">Apelido do Jogador</label>
+              <input
+                placeholder={"Digite o id do jogador "}
+                type="text"
+                {...register("playerName")}
               />
               {errors.playerId?.message && (
                 <p>{errors.playerId?.message?.toString()}</p>

@@ -8,6 +8,7 @@ export interface IResponseLogin {
 export interface IBan {
   id: string;
   playerId: string;
+  playerName: string;
   punicao: number;
   motivo: string;
   created?: Date | string;

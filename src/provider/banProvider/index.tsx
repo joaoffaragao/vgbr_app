@@ -28,6 +28,7 @@ const BanProvider = () => {
       await requestNewban(data, token);
       toastSucesso("ban adicionado com sucesso");
       abrirFecharModalNovoban();
+      getListBan();
     } catch (error: any) {
       console.log(error);
       toastErro(error.response.data.message);
