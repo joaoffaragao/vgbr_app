@@ -1,13 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Header from "../../components/Header";
 import { BanContext } from "../../provider/banProvider";
 import { IBan } from "../../service/server/requestNewban";
 import Container from "./style";
 
 const BanList = () => {
-  const { banList } = useContext(BanContext);
+  const { banList,getListBan,perdoarBan } = useContext(BanContext);
 
-  function diasRestantes(ban: IBan): number {
+  function  diasRestantes(ban: IBan): number {
 
     const d1  = new Date();
     const d2    = new Date(ban.created!);
@@ -19,13 +19,20 @@ const BanList = () => {
     return  Math.round(diasRestantes);
   }
 
+  useEffect(()=>{
+    const TokenArmazeado = localStorage.getItem("vgbr:token");
+    if(TokenArmazeado){
+      getListBan(TokenArmazeado)
+    }
+  },[])
+
   return (
     <Container>
       <Header string="/staff" />
       <main>
         <ul>
           {banList.filter((ban) =>{
-            return (diasRestantes(ban)) > 1
+            return (diasRestantes(ban)) > 0
           }).map((ban) => {
             return (
               <li key={ban.id + ban.motivo}>
@@ -40,7 +47,7 @@ const BanList = () => {
                   )}
                 </div>
                 <button onClick={()=>{
-                  console.log(`perdoa ${ban.playerName}`)
+                 perdoarBan(ban)
                 }}>Perdoar</button>
               </li>
             );
