@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
+
 const Container = styled.div`
-  width: 100%;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  background-color: #0c0c0c;
-  border-radius: 0.5rem;
-  gap: 1rem;
+
+
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #0c0c0c;
+    border-radius: 0.5rem;
+    gap: 1rem;
+
   > header {
     height: 50px;
     display: flex;
@@ -15,7 +19,11 @@ const Container = styled.div`
     align-items: center;
     padding: 0 0.5rem;
   }
-  > main {
+
+
+
+
+ > main {
     width: 100%;
     height: 100%;
     padding: 0 0.5rem;
@@ -56,6 +64,7 @@ const Container = styled.div`
       }
     }
   }
-`;
 
-export default Container;
+`
+
+export default Container

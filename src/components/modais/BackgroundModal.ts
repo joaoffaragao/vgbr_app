@@ -4,7 +4,7 @@ const BackgroundModal = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   background: rgba(0, 0, 0, 0.65);
   display: flex;
@@ -12,5 +12,6 @@ const BackgroundModal = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  top:0
 `;
 export default BackgroundModal;

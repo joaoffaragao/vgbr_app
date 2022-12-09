@@ -1,12 +1,14 @@
 import { useContext, useEffect } from "react";
 import Header from "../../components/Header";
+import EditBan from "../../components/modais/editBan/editBan";
 import { BanContext } from "../../provider/banProvider";
+import { ModalStaffContext } from "../../provider/modalProvider";
 import { IBan } from "../../service/server/requestNewban";
 import Container from "./style";
 
 const BanList = () => {
   const { banList,getListBan,perdoarBan } = useContext(BanContext);
-
+  const  {editBanEstado , abrirFecharModalEditarBan} = useContext(ModalStaffContext)
   function  diasRestantes(ban: IBan): number {
 
     const d1  = new Date();
@@ -35,7 +37,9 @@ const BanList = () => {
             return (diasRestantes(ban)) > 0
           }).map((ban) => {
             return (
-              <li key={ban.id + ban.motivo}>
+              <li onClick={()=>{
+                abrirFecharModalEditarBan(ban)
+              }} key={ban.id + ban.motivo}>
                 <div>
                   <h2>Nick: {ban.playerName}</h2>
                   <p>Motivo: {ban.motivo}</p>
@@ -54,6 +58,7 @@ const BanList = () => {
           })}
         </ul>
       </main>
+      {editBanEstado && <EditBan/>}
     </Container>
   );
 };

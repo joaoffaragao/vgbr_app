@@ -1,15 +1,17 @@
-import BackgroundModal from "../BackgroundModal";
-import Container from "./style";
+import { useContext } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-
+import { AdmContext } from "../../../provider/admProvider";
+import { ModalStaffContext } from "../../../provider/modalProvider";
+import { ToastContext } from "../../../provider/toastyProvider";
+import { IBan } from "../../../service/server/requestNewban";
+import Background from "../BackgroundModal";
+import Container from "./style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm } from "react-hook-form";
-import { ModalStaffContext } from "../../../provider/modalProvider";
-import { useContext } from "react";
-import { BanContext } from "../../../provider/banProvider";
-import EditBan from "../editBan/editBan";
+
+
 
 const schema = yup
   .object({
@@ -20,47 +22,51 @@ const schema = yup
   .required();
 
 export interface INewBanRequest {
-  playerId: string;
-  playerName: string;
-  punicao: Number;
-  motivo: string;
+    playerId: string;
+    playerName: string;
+    punicao: Number;
+    motivo: string;
 }
+  
 
-const NovoBan = () => {
-  const { abrirFecharModalNovoban, banEdit } = useContext(ModalStaffContext);
-  const { novoBan } = useContext(BanContext);
+const EditBan = () =>{
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<INewBanRequest>({
-    resolver: yupResolver(schema),
-  });
+    const { toastErro, toastSucesso } = useContext(ToastContext);
+    const { abrirFecharModalEditarBan, banEdit } = useContext(ModalStaffContext);
+    const { token } = useContext(AdmContext);
+  
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm<INewBanRequest>({
+        resolver: yupResolver(schema),
+      });
+    
+      function onSubmit(data: INewBanRequest) {
+        console.log(data);
+      }
 
-  function onSubmit(data: INewBanRequest) {
-    novoBan(data);
-  }
 
-  return (
-    <BackgroundModal>
-      <Container>
-        <header>
-          <h1>Novo Ban</h1>
-          <AiOutlineClose
-            onClick={() => {
-              abrirFecharModalNovoban();
-            }}
-            color="white"
-            size={"2rem"}
+    return(
+        <Background>
+            <Container>
+            <header>
+          <h1>Editar Ban</h1>
+            <AiOutlineClose
+                onClick={() => {
+                    abrirFecharModalEditarBan({} as IBan);
+                }}
+                color="white"
+                size={"2rem"}
           />
         </header>
         <main>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="InputBox">
-              <label htmlFor="email">Id do Jogador</label>
+              <label htmlFor="id">Id do Jogador</label>
               <input
-                placeholder={"Digite o id do jogador "}
+                 placeholder={banEdit.id}
                 type="text"
                 {...register("playerId")}
               />
@@ -69,11 +75,12 @@ const NovoBan = () => {
               )}
             </div>
             <div className="InputBox">
-              <label htmlFor="email">Apelido do Jogador</label>
+              <label htmlFor="name">Apelido do Jogador</label>
               <input
-                placeholder={"Digite o id do jogador "}
+                placeholder={banEdit.playerName}
                 type="text"
                 {...register("playerName")}
+                value = {banEdit.playerName}
               />
               {errors.playerId?.message && (
                 <p>{errors.playerId?.message?.toString()}</p>
@@ -84,6 +91,7 @@ const NovoBan = () => {
               <input
                 placeholder={"Quantos dias de puniçao"}
                 type="number"
+                value = {banEdit.punicao}
                 {...register("punicao")}
               />
             </div>
@@ -92,6 +100,7 @@ const NovoBan = () => {
               <textarea
                 rows={6}
                 placeholder={"Digite o motivo da puniçao"}
+                value = {banEdit.motivo}
                 {...register("motivo")}
               />
               {errors.motivo?.message && (
@@ -101,9 +110,9 @@ const NovoBan = () => {
             <button>Adicionar</button>
           </form>
         </main>
-      </Container>
-    </BackgroundModal>
-  );
-};
+            </Container>
+        </Background>
+    )
+}
 
-export default NovoBan;
+export default EditBan
